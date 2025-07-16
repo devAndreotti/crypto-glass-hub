@@ -1,0 +1,264 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definição do sistema de cores personalizado para o tema crypto */
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 100% 33%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 0 100% 33%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 98%;
+    --accent-foreground: 215 28% 17%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 0 72% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Estilos personalizados para glassmorphism */
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-glass-light border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-md bg-glass-dark border border-white/10;
+  }
+  
+  /* Glassmorphism para tema claro */
+  .light .glass {
+    @apply backdrop-blur-md bg-white/60 border border-slate-200/60 shadow-lg;
+  }
+  
+  .light .glass:hover {
+    @apply bg-white/80 border-slate-300/60 shadow-xl;
+  }
+  
+  .crypto-gradient {
+    background: linear-gradient(135deg, #690000 0%, #a80000 50%, #000000 100%);
+  }
+  
+  .crypto-gradient-subtle {
+    background: linear-gradient(135deg, rgba(105, 0, 0, 0.3) 0%, rgba(168, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
+  }
+  
+  /* Gradiente para tema claro */
+  .light .crypto-gradient {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+  }
+  
+  .light .crypto-gradient-subtle {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(248, 113, 113, 0.15) 50%, rgba(252, 165, 165, 0.1) 100%);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-crypto-red-medium to-crypto-red-light bg-clip-text text-transparent;
+  }
+  
+  /* Gradiente de texto para tema claro */
+  .light .text-gradient {
+    @apply bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-crypto-red-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-crypto-red-medium;
+}
+
+/* Scrollbar para tema claro */
+.light ::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  @apply bg-red-400 rounded-full;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-500;
+}
+
+/* Melhorias para touch em dispositivos móveis */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+canvas {
+  touch-action: auto !important;
+}
+
+/* Otimizações de performance */
+* {
+  box-sizing: border-box;
+}
+
+/* Animação otimizada para ícones flutuantes */
+@keyframes float {
+  0% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% { 
+    transform: translateY(-10px) rotate(2deg);
+  }
+  66% { 
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  100% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Animação de slide up otimizada */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+/* Otimizações para elementos com transformações */
+.glass,
+.crypto-gradient,
+.text-gradient {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Melhorias para transições suaves */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevenção de repaint desnecessário */
+.hover-scale {
+  transform: translateZ(0);
+}
+
+/* Otimização para dispositivos de baixa performance */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-slide-up,
+  .animate-bounce {
+    animation: none;
+  }
+}
+
+/* Melhorias específicas para tema claro */
+.light .text-crypto-red-medium {
+  @apply text-red-500;
+}
+
+.light .text-crypto-red-light {
+  @apply text-red-400;
+}
+
+.light .text-crypto-red-dark {
+  @apply text-red-600;
+}
+
+/* Botões mais elegantes no tema claro */
+.light .crypto-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.3);
+}
+
+/* Overlay mais suave no tema claro - removido devido ao escape de caracteres */
