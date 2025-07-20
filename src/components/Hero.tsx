@@ -101,16 +101,17 @@ const Hero = () => {
           {/* Botões de call-to-action */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             {/* Botão principal */}
-            <button className="group relative overflow-hidden px-8 py-4 crypto-gradient rounded-xl font-semibold text-white transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-crypto-red-medium/50 hover:-translate-y-1">
+            <button
+              onClick={() => {
+                document.getElementById("mercado")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group relative overflow-hidden px-8 py-4 crypto-gradient rounded-xl font-semibold text-white transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-crypto-red-medium/50 hover:-translate-y-1"
+            >
               <span className="relative z-10 flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                 Explorar Mercado
               </span>
-              {/* Overlays de efeito no hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-crypto-red-medium to-crypto-red-light opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
-            
             {/* Botão secundário */}
             <button className="group px-8 py-4 glass hover:bg-white/30 rounded-xl font-semibold transition-all duration-500 hover:scale-110 border border-white/20 hover:border-white/40 hover:-translate-y-1 hover:shadow-xl">
               <span className="flex items-center gap-2">

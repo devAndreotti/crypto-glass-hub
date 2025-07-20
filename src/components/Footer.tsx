@@ -8,7 +8,7 @@ const Footer = () => {
     {
       name: 'GitHub',
       icon: Github,
-      href: 'https://github.com/devAndreotti?tab=repositories',
+      href: 'https://github.com/devAndreotti',
       color: 'hover:text-white'
     },
     {

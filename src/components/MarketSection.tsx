@@ -92,7 +92,7 @@ const MarketSection = () => {
             </div>
           </div>
           {/* Título da seção */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 id="mercado" className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient">Mercado</span> Crypto
           </h2>
           {/* Descrição da seção */}
@@ -185,12 +185,17 @@ const MarketSection = () => {
               para te ajudar a tomar decisões informadas no mercado de criptomoedas.
             </p>
             {/* Botão para ver projeto no GitHub */}
-            <button className="px-8 py-4 crypto-gradient rounded-xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-crypto-red-medium/30">
+            <a
+              href="https://github.com/devAndreotti/crypto-glass-hub/blob/main/README.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 crypto-gradient rounded-xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-crypto-red-medium/30"
+            >
               <span className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
                 Ver Projeto no GitHub
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
