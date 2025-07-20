@@ -1,12 +1,17 @@
+/*
+  Este arquivo CSS foi reorganizado para melhorar a manutenibilidade e clareza.
+  Foram adicionadas variáveis CSS para cores e transições no :root.
+  A funcionalidade original do CSS foi mantida.
+*/
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definição do sistema de cores personalizado para o tema crypto */
-
+/* Definição de variáveis CSS globais */
 @layer base {
   :root {
+    /* Cores base para o tema escuro (padrão) */
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
@@ -36,8 +41,22 @@
     --ring: 0 100% 33%;
 
     --radius: 0.5rem;
+
+    /* Cores específicas para gradientes e scrollbar (tema escuro) */
+    --crypto-red-dark: #690000;
+    --crypto-red-medium: #a80000;
+    --crypto-red-light: #000000;
+    --crypto-red-dark-rgb: 105, 0, 0;
+    --crypto-red-medium-rgb: 168, 0, 0;
+    --crypto-red-light-rgb: 0, 0, 0;
+
+    /* Transições */
+    --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-duration-default: 0.15s; /* Padrão para transições */
+    --transition-duration-hover: 0.2s; /* Duração para efeitos de hover */
   }
 
+  /* Cores para o tema claro */
   .light {
     --background: 0 0% 100%;
     --foreground: 215 28% 17%;
@@ -66,6 +85,19 @@
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 0 72% 51%;
+
+    /* Cores específicas para gradientes e scrollbar (tema claro) */
+    --light-red-dark: #dc2626;
+    --light-red-medium: #ef4444;
+    --light-red-light: #f87171;
+    --light-red-dark-rgb: 239, 68, 68;
+    --light-red-medium-rgb: 248, 113, 113;
+    --light-red-light-rgb: 252, 165, 165;
+
+    /* Cores para texto no tema claro */
+    --text-red-500: #ef4444;
+    --text-red-400: #f87171;
+    --text-red-600: #dc2626;
   }
 }
 
@@ -80,7 +112,7 @@
   }
 }
 
-/* Estilos personalizados para glassmorphism */
+/* Estilos personalizados para glassmorphism e gradientes */
 @layer components {
   .glass {
     @apply backdrop-blur-md bg-glass-light border border-white/20;
@@ -100,20 +132,20 @@
   }
   
   .crypto-gradient {
-    background: linear-gradient(135deg, #690000 0%, #a80000 50%, #000000 100%);
+    background: linear-gradient(135deg, var(--crypto-red-dark) 0%, var(--crypto-red-medium) 50%, var(--crypto-red-light) 100%);
   }
   
   .crypto-gradient-subtle {
-    background: linear-gradient(135deg, rgba(105, 0, 0, 0.3) 0%, rgba(168, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(135deg, rgba(var(--crypto-red-dark-rgb), 0.3) 0%, rgba(var(--crypto-red-medium-rgb), 0.2) 50%, rgba(var(--crypto-red-light-rgb), 0.4) 100%);
   }
   
   /* Gradiente para tema claro */
   .light .crypto-gradient {
-    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+    background: linear-gradient(135deg, var(--light-red-dark) 0%, var(--light-red-medium) 50%, var(--light-red-light) 100%);
   }
   
   .light .crypto-gradient-subtle {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(248, 113, 113, 0.15) 50%, rgba(252, 165, 165, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(var(--light-red-dark-rgb), 0.1) 0%, rgba(var(--light-red-medium-rgb), 0.15) 50%, rgba(var(--light-red-light-rgb), 0.1) 100%);
   }
   
   .text-gradient {
@@ -225,7 +257,7 @@ canvas {
 /* Melhorias para transições suaves */
 .transition-all {
   transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--transition-timing-function);
 }
 
 /* Prevenção de repaint desnecessário */
@@ -244,21 +276,19 @@ canvas {
 
 /* Melhorias específicas para tema claro */
 .light .text-crypto-red-medium {
-  @apply text-red-500;
+  color: var(--text-red-500);
 }
 
 .light .text-crypto-red-light {
-  @apply text-red-400;
+  color: var(--text-red-400);
 }
 
 .light .text-crypto-red-dark {
-  @apply text-red-600;
+  color: var(--text-red-600);
 }
 
 /* Botões mais elegantes no tema claro */
 .light .crypto-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(var(--light-red-medium-rgb), 0.3);
 }
-
-/* Overlay mais suave no tema claro - removido devido ao escape de caracteres */

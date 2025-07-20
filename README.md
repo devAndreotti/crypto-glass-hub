@@ -1,8 +1,8 @@
 # 📊 Crypto Glass Hub - Visão Transparente do Mercado!
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/devAndreotti/crypto-glass-hub?color=FFF&labelColor=3b2f4b&style=flat-square">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/devAndreotti/crypto-glass-hub?color=FFF&labelColor=3b2f4b&style=flat-square">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/devAndreotti/crypto-glass-hub?color=FFF&labelColor=3b2f4b&style=flat-square">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/devAndreotti/crypto-glass-hub?color=802932&labelColor=3b2f4b&style=flat-square">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/devAndreotti/crypto-glass-hub?color=802932&labelColor=3b2f4b&style=flat-square">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/devAndreotti/crypto-glass-hub?color=FF802932F&labelColor=3b2f4b&style=flat-square">
 </p>
 
 <div align="center">
