@@ -6,7 +6,7 @@
 </p>
 
 <div align="center">
-  <img src="./project-01.png" alt="Captura de tela do Crypto Glass Hub">
+  <img src="./public/img/project.png" alt="Captura de tela do Crypto Glass Hub">
 </div>
 
 ## 📋 Sobre o Projeto
