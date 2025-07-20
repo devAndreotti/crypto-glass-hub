@@ -11,8 +11,14 @@ const Hero = () => {
   return (
     // Seção principal com altura mínima da tela e centralização do conteúdo
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background 3D interativo usando Spline */}
-      <div className="absolute inset-0 z-0" style={{ touchAction: 'auto' }}>
+      {/* Background 3D interativo usando Spline - CORRIGIDO */}
+      <div 
+        className="absolute inset-0 z-0" 
+        style={{ 
+          pointerEvents: 'none', // Desabilita eventos no container
+          touchAction: 'auto' 
+        }}
+      >
         <Spline
           scene={isMobile 
             ? "https://prod.spline.design/2Apnv4RNvW7u-mNR/scene.splinecode" // Cena 3D para mobile
@@ -20,8 +26,8 @@ const Hero = () => {
           }
           className="w-full h-full"
           style={{ 
-            pointerEvents: 'auto',     // Permite interação com o 3D
-            touchAction: 'auto',       // Permite gestos de toque
+            pointerEvents: 'auto',      // Permite interação com o canvas do Spline
+            touchAction: 'auto',        // Permite gestos de toque
             WebkitTouchCallout: 'none', // Remove callouts no iOS
             WebkitUserSelect: 'none',   // Remove seleção de texto no WebKit
             userSelect: 'none'          // Remove seleção de texto
@@ -68,8 +74,11 @@ const Hero = () => {
         <Target className="w-5 h-5 text-crypto-red-medium opacity-30" />
       </div>
 
-      {/* Conteúdo principal - Interativo */}
-      <div className="relative z-30 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
+      {/* Conteúdo principal - Interativo - CORRIGIDO */}
+      <div 
+        className="relative z-30 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" 
+        style={{ pointerEvents: 'auto' }} // Garante que o conteúdo seja interativo
+      >
         {/* Animação de deslizar para cima */}
         <div className="animate-slide-up">
           {/* Badge/Tag da plataforma */}
@@ -121,20 +130,32 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Estatísticas da plataforma */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto mb-12">
+          {/* Estatísticas da plataforma - CORRIGIDO */}
+          <div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto mb-12"
+            style={{ pointerEvents: 'auto' }} // Garante que os cards sejam interativos
+          >
             {/* Card de estatística 1 */}
-            <div className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group">
+            <div 
+              className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group cursor-pointer"
+              style={{ pointerEvents: 'auto' }} // Garante interação individual
+            >
               <div className="text-2xl font-bold text-gradient group-hover:scale-110 transition-transform duration-300">12+</div>
               <div className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">Criptomoedas</div>
             </div>
             {/* Card de estatística 2 */}
-            <div className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group">
+            <div 
+              className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group cursor-pointer"
+              style={{ pointerEvents: 'auto' }} // Garante interação individual
+            >
               <div className="text-2xl font-bold text-gradient group-hover:scale-110 transition-transform duration-300">24/7</div>
               <div className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">Dados Atualizados</div>
             </div>
             {/* Card de estatística 3 */}
-            <div className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group">
+            <div 
+              className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group cursor-pointer"
+              style={{ pointerEvents: 'auto' }} // Garante interação individual
+            >
               <div className="text-2xl font-bold text-gradient group-hover:scale-110 transition-transform duration-300">Real-time</div>
               <div className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">Análises</div>
             </div>
