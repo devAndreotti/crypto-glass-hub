@@ -1,9 +1,3 @@
-/*
-  Este arquivo CSS foi reorganizado para melhorar a manutenibilidade e clareza.
-  Foram adicionadas variáveis CSS para cores e transições no :root.
-  A funcionalidade original do CSS foi mantida.
-*/
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -189,20 +183,70 @@
   @apply bg-red-500;
 }
 
+/* PREVENÇÃO DE ZOOM POR PINÇA - ADICIONADO */
+/* Desabilita zoom por pinça em toda a aplicação */
+html {
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* Melhorias para touch em dispositivos móveis */
 * {
   -webkit-tap-highlight-color: transparent;
+  /* Previne zoom por pinça em todos os elementos */
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
 }
 
 body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Força touch-action manipulation para prevenir zoom */
   touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  /* Previne zoom duplo toque */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
+/* Configurações específicas para canvas (Spline) */
 canvas {
-  touch-action: auto !important;
+  /* Permite interação com o canvas mas previne zoom */
+  touch-action: pan-x pan-y !important;
+  -ms-touch-action: pan-x pan-y !important;
+}
+
+/* Configurações para elementos interativos */
+button, a, input, textarea, select {
+  /* Permite interação normal mas previne zoom */
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  /* Restaura seleção de texto para inputs */
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Configurações específicas para botões */
+button {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Otimizações de performance */

@@ -2,11 +2,35 @@
 import { ArrowDown, BarChart3, TrendingUp, Zap, Bitcoin, DollarSign, TrendingDown, Activity, PieChart, Coins, LineChart, Target } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useState, useEffect } from 'react';
 
 // Componente funcional Hero para a seção principal da página
 const Hero = () => {
   // Hook personalizado para detectar se o dispositivo é mobile
   const isMobile = useIsMobile();
+  
+  // Estado para armazenar a data atual
+  const [currentDate, setCurrentDate] = useState('');
+
+  // Hook para atualizar a data em tempo real
+  useEffect(() => {
+    const updateDate = () => {
+      const now = new Date();
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+      setCurrentDate(`${day}/${month}/${year}`);
+    };
+
+    // Atualiza a data imediatamente
+    updateDate();
+
+    // Atualiza a data a cada minuto (60000ms)
+    const interval = setInterval(updateDate, 60000);
+
+    // Cleanup do interval quando o componente for desmontado
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     // Seção principal com altura mínima da tela e centralização do conteúdo
@@ -143,12 +167,12 @@ const Hero = () => {
               <div className="text-2xl font-bold text-gradient group-hover:scale-110 transition-transform duration-300">12+</div>
               <div className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">Criptomoedas</div>
             </div>
-            {/* Card de estatística 2 */}
+            {/* Card de estatística 2 - ATUALIZADO COM DATA EM TEMPO REAL */}
             <div 
               className="glass rounded-lg p-4 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg group cursor-pointer"
               style={{ pointerEvents: 'auto' }} // Garante interação individual
             >
-              <div className="text-2xl font-bold text-gradient group-hover:scale-110 transition-transform duration-300">24/7</div>
+              <div className="text-2xl font-bold text-gradient group-hover:scale-110 transition-transform duration-300">{currentDate}</div>
               <div className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">Dados Atualizados</div>
             </div>
             {/* Card de estatística 3 */}
